@@ -9,7 +9,7 @@ Another advantage of knowing future sales is that achieving predetermined target
 
 From the exploratory data analysis I noticed that most of the features from the data had strong correlation with the project target, so I decided to implement a regression solution for the problem at first, this decision changed rapidly when I realized an strong time series pattern of the weekly sales trough the years. From there I knew I needed to implement Seasonal and Non-seasonal time series models (ARIMA, SARIMA, STL, ES, ETS, VAR, LSTM, CNN, GBM).
 
-![Yearly weekly sales](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/Yearly%20weekly%20sales%20by%20month.png)
+![Yearly weekly sales](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/Yearly%20weekly%20sales%20by%20month.png)
 
 
 In the project I still implemented a Random Forest Regressor in order to see how the features performed predicting the weekly sales. Even when the best solution for the problem was a time series model, creating a regression at first was a good decision and implementation since:
@@ -20,7 +20,7 @@ In the project I still implemented a Random Forest Regressor in order to see how
 
 The Random Forest Regressor showed pretty results in the testing data as you can see in the following chart:
 
-![Random Forest Regressor vs. Testing data](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/Data%20vs.%20Random%20Forest.png)
+![Random Forest Regressor vs. Testing data](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/Data%20vs.%20Random%20Forest.png)
 
 Random Forest Regressor ranked 7 out of the 9 different transformations / models we tested in this project. After the regression I realized that the data was not stationary, this is a particular problem for ARIMA based models. Since we need stationary in order to run a time series model I needed to make some transformations in the data and test each transformations with the models, the transformations applied to the data were:
 
@@ -37,15 +37,15 @@ Since First Difference, Shift and Log were the transformation that showed more s
 
 As you can see in the following statistics ARIMA with the Log transformation in the data showed the better predicting performance and the lower MAE, MSE and RMSE metrics:
 
-![Time Series Models Statistics](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/Models%20statistics.png)
+![Time Series Models Statistics](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/Models%20statistics.png)
 
 Plotting the ARIMA with Log transformation showed an amazing performance as described by the statistics:
 
-![ARIMA Log chart](https://raw.githubusercontent.com/liamarguedas/data/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/ARIMA%20DATA%20LOG%20CHART.png)
+![ARIMA Log chart](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/ARIMA%20DATA%20LOG%20CHART.png)
 
 By that time I have already taken the decision of using the ARIMA model, in order to take a final decision it was necessary to look at each data transformation performance in each model:
 
-![Data transformations chart](https://github.com/liamarguedas/data/blob/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/Model%20vs.%20Data%20Transformations.png?raw=true)
+![Data transformations chart](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/Model%20vs.%20Data%20Transformations.png)
 
 ARIMA in the shift and log transformation was the most accurate and the ones that showed the better statistics for our problem, so I decided to use them in order to take a final decision.
 
@@ -53,11 +53,11 @@ ARIMA in the shift and log transformation was the most accurate and the ones tha
 
 To make a final decision I decided to choose between ARIMA in the log transformation and ARIMA in the shift transformation, since I did test the models in the testing data and I did not have more data available for testing, I choose to test in the entire dataset (Train + Test) and see how the both transformations perform against each other to take a final decision, both transformations showed an amazing performance with an ARIMA model as you can see in the following chart:
 
-![Final transformations chart](https://github.com/liamarguedas/data/blob/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/ARIMA%20vs.%20Data%20Shift%20&%20Data%20Log.png?raw=true)
+![Final transformations chart](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/ARIMA%20vs.%20Data%20Shift%20&%20Data%20Log.png)
 
 By looking at the statistics there was little difference in the metrics:
 
-![Final statistics chart](https://github.com/liamarguedas/data/blob/main/Data-Science/Walmart-Sales-Forecast/Summary-Charts/Final%20ARIMA%20models%20statistics.png?raw=true)
+![Final statistics chart](https://raw.githubusercontent.com/liamarguedas/walmart-sales-forecast/main/Summary-Charts/Final%20ARIMA%20models%20statistics.png)
 
 So It was a hard decision to choose between what type of data transformation to use since they're both had an amazing performance with the ARIMA model, I have chosen to use the Log transformation to end this project.
 
